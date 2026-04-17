@@ -9,6 +9,13 @@ extends CharacterBody3D
 @export_node_path("Node3D") var PlayerCharacterMesh: NodePath
 @onready var player_mesh = get_node(PlayerCharacterMesh)
 
+### my code
+@onready var inventory = $Inventory #assign in inspector
+### inventory getter function
+func getInventory():
+	return inventory
+### end of my code
+
 # Gamplay mechanics and Inspector tweakables
 @export var gravity = 9.8
 @export var jump_force = 9

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ngecyo0pmaed"]
+[gd_scene load_steps=17 format=3 uid="uid://ngecyo0pmaed"]
 
 [ext_resource type="Sky" uid="uid://cbbdl23q60wak" path="res://addons/ThirdPersonTemplate/Environments/SkyBox.res" id="1_rfwro"]
 [ext_resource type="Script" uid="uid://kr85c4gpx2g5" path="res://Scripts/GameManager.gd" id="1_wyl2q"]
@@ -9,11 +9,8 @@
 [ext_resource type="Material" uid="uid://cpk3jtowelhgh" path="res://addons/ThirdPersonTemplate/Environments/Materials/PingkGrid.material" id="6_vn1us"]
 [ext_resource type="Material" uid="uid://bquocw2a8n271" path="res://addons/ThirdPersonTemplate/Environments/Materials/GreyGrid.material" id="7_x40f1"]
 [ext_resource type="PackedScene" uid="uid://c75s2m6eic1vo" path="res://addons/ThirdPersonTemplate/Character/Nodes/PlayerTemplate.tscn" id="8_0iswe"]
-[ext_resource type="PackedScene" uid="uid://cccios421qabb" path="res://GEP Core/Items/ItemPickup.tscn" id="10_dtxi8"]
-[ext_resource type="Resource" uid="uid://cjlvxls5twmor" path="res://GEP Core/Items/Item Data/common_cube.tres" id="11_iywyu"]
-[ext_resource type="Resource" uid="uid://dlj7vrgq8r1" path="res://GEP Core/Items/Item Data/epic_cube.tres" id="12_vn1us"]
-[ext_resource type="Resource" uid="uid://dph10pkuj8avf" path="res://GEP Core/Items/Item Data/rare_cube.tres" id="12_x40f1"]
-[ext_resource type="Resource" uid="uid://b7vpcr5dm5k34" path="res://GEP Core/Items/Item Data/legendary_cube.tres" id="13_x40f1"]
+[ext_resource type="Script" uid="uid://cwb153asyups4" path="res://Scripts/ItemObject.gd" id="10_dtxi8"]
+[ext_resource type="Script" uid="uid://cv47byddnx7t4" path="res://Scripts/Inventory.gd" id="10_iywyu"]
 
 [sub_resource type="GDScript" id="GDScript_rfwro"]
 script/source = "extends Node3D
@@ -31,14 +28,13 @@ sdfgi_enabled = true
 adjustment_enabled = true
 adjustment_saturation = 1.15
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iywyu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sc53d"]
+albedo_color = Color(0.784559, 0.0552371, 0.818038, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vn1us"]
-albedo_color = Color(0.48453, 0.475293, 0.477604, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x40f1"]
-albedo_color = Color(0.336055, 0.575825, 1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vcdfk"]
-albedo_color = Color(0.815498, 0.720106, 7.70092e-07, 1)
+albedo_color = Color(0.742807, 0.714203, 3.85046e-07, 1)
 
 [node name="Scene" type="Node3D"]
 script = SubResource("GDScript_rfwro")
@@ -143,33 +139,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21.6178)
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_wyl2q")
 
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("10_iywyu")
+
 [node name="ItemObject" type="Node" parent="."]
 
-[node name="CommonItemPickup" parent="ItemObject" instance=ExtResource("10_dtxi8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11225, -17.6602)
-item_data = ExtResource("11_iywyu")
+[node name="CSGBox3D" type="CSGBox3D" parent="ItemObject"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.62505, 1.17424, -17.7975)
+material = SubResource("StandardMaterial3D_iywyu")
+script = ExtResource("10_dtxi8")
+item_name = "White Box"
 
-[node name="MeshInstance3D" parent="ItemObject/CommonItemPickup" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_vn1us")
+[node name="CSGBox3D2" type="CSGBox3D" parent="ItemObject"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.68866, 1.17424, -17.7975)
+material = SubResource("StandardMaterial3D_sc53d")
+script = ExtResource("10_dtxi8")
+item_name = "Purple Box"
+pickupable = false
+rarity = 2
 
-[node name="RareItemPickup" parent="ItemObject" instance=ExtResource("10_dtxi8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.66795, 0.695522, -17.6132)
-item_data = ExtResource("12_x40f1")
-
-[node name="MeshInstance3D" parent="ItemObject/RareItemPickup" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_x40f1")
-
-[node name="EpicItemPickup" parent="ItemObject" instance=ExtResource("10_dtxi8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.39258, 0.853332, -17.806)
-item_data = ExtResource("12_vn1us")
-
-[node name="LegendaryItemPickup" parent="ItemObject" instance=ExtResource("10_dtxi8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9367, 0.795845, -17.7435)
-item_data = ExtResource("13_x40f1")
-
-[node name="MeshInstance3D" parent="ItemObject/LegendaryItemPickup" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_vcdfk")
-
-[editable path="ItemObject/CommonItemPickup"]
-[editable path="ItemObject/RareItemPickup"]
-[editable path="ItemObject/LegendaryItemPickup"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="ItemObject"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.76485, 1.17424, -17.7975)
+material = SubResource("StandardMaterial3D_vn1us")
+script = ExtResource("10_dtxi8")
+item_name = "Golden Box"
+rarity = 3
