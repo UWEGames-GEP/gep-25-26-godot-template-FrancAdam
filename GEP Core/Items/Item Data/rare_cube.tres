@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("1_1yx1v")
-item_name = "Legendary Cube"
+item_name = "Rare Cube"
 pickupable = true
-rarity = 3
+rarity = 1
 scene = ExtResource("1_yy6ox")
 metadata/_custom_type_script = "uid://cwb153asyups4"

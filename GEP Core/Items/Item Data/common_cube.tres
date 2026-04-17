@@ -9,4 +9,5 @@ item_name = "Common Cube"
 pickupable = true
 rarity = 0
 scene = ExtResource("1_j2enb")
+color = Color(0, 0, 0, 1)
 metadata/_custom_type_script = "uid://cwb153asyups4"
