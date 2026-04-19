@@ -10,7 +10,7 @@ extends CharacterBody3D
 @onready var player_mesh = get_node(PlayerCharacterMesh)
 
 ### my code
-@onready var inventory = $Inventory #assign in inspector
+@onready var inventory = $InventoryData #assign in inspector
 ### inventory getter function
 func getInventory():
 	return inventory
