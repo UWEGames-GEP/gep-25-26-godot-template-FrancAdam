@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+
 # Grabs the prebuilt AnimationTree 
 @onready var PlayerAnimationTree = $AnimationTree.get_path()
 @onready var animation_tree = get_node(PlayerAnimationTree)
@@ -39,6 +40,7 @@ var is_attacking = bool()
 var is_rolling = bool()
 var is_walking = bool()
 var is_running = bool()
+var can_look = bool(true)
 
 # Physics values
 var direction = Vector3()
@@ -52,6 +54,9 @@ var acceleration = int()
 
 func _ready(): # Camera based Rotation
 	direction = Vector3.BACK.rotated(Vector3.UP, $Camroot/h.global_transform.basis.get_euler().y)
+
+
+
 
 func _input(event): # All major mouse and button input events
 	if event is InputEventMouseMotion:

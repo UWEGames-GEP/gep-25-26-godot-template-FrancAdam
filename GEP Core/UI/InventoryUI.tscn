@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://5y7n5eiraaoj"]
+
+[ext_resource type="Script" uid="uid://bsvdplaeu6fd0" path="res://Scripts/Inventory/UI/InventoryUI.gd" id="1_12vc3"]
+[ext_resource type="LabelSettings" uid="uid://b65mbr4u2ffl0" path="res://GEP Core/UI/LabelSettings/InventoryLS.tres" id="2_lqha0"]
+
+[node name="InventoryUI" type="CanvasLayer"]
+script = ExtResource("1_12vc3")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 95.31
+offset_top = -216.0
+offset_right = 456.31
+offset_bottom = 252.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemsList" type="VBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="InventoryLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 167.36
+offset_top = 28.52
+offset_right = 381.36
+offset_bottom = 92.52
+grow_horizontal = 2
+text = "Inventory"
+label_settings = ExtResource("2_lqha0")
+horizontal_alignment = 1
+vertical_alignment = 1

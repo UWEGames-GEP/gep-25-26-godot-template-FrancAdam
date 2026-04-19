@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ngecyo0pmaed"]
+[gd_scene load_steps=19 format=3 uid="uid://ngecyo0pmaed"]
 
 [ext_resource type="Sky" uid="uid://cbbdl23q60wak" path="res://addons/ThirdPersonTemplate/Environments/SkyBox.res" id="1_rfwro"]
 [ext_resource type="Script" uid="uid://kr85c4gpx2g5" path="res://Scripts/GameManager.gd" id="1_wyl2q"]
@@ -14,6 +14,8 @@
 [ext_resource type="Resource" uid="uid://dlj7vrgq8r1" path="res://GEP Core/Items/Item Data/epic_cube.tres" id="12_vn1us"]
 [ext_resource type="Resource" uid="uid://dph10pkuj8avf" path="res://GEP Core/Items/Item Data/rare_cube.tres" id="12_x40f1"]
 [ext_resource type="Resource" uid="uid://b7vpcr5dm5k34" path="res://GEP Core/Items/Item Data/legendary_cube.tres" id="13_x40f1"]
+[ext_resource type="PackedScene" uid="uid://5y7n5eiraaoj" path="res://GEP Core/UI/InventoryUI.tscn" id="15_0iswe"]
+[ext_resource type="PackedScene" uid="uid://c04a8bt7rnvjt" path="res://GEP Core/UI/PausedUI.tscn" id="16_ncgrs"]
 
 [sub_resource type="GDScript" id="GDScript_rfwro"]
 script/source = "extends Node3D
@@ -131,6 +133,37 @@ material = ExtResource("7_x40f1")
 [node name="PlayerTemplate" parent="." instance=ExtResource("8_0iswe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21.6178)
 
+[node name="Camroot" parent="PlayerTemplate" index="3" node_paths=PackedStringArray("state_manager")]
+state_manager = NodePath("../../GameManager")
+
+[node name="Skeleton3D" parent="PlayerTemplate/mannequiny-0_4_0/root" index="0"]
+bones/0/position = Vector3(-0.00730732, 0.967595, 0.252222)
+bones/1/rotation = Quaternion(0.752522, 0.100132, 0.650657, 0.0181675)
+bones/1/scale = Vector3(0.999998, 1.02853, 1)
+bones/3/rotation = Quaternion(0.281419, 0.531572, -0.311568, 0.735635)
+bones/3/scale = Vector3(0.999286, 0.988865, 0.985469)
+bones/4/rotation = Quaternion(0.108412, 0.942631, 0.314551, -0.0274005)
+bones/4/scale = Vector3(1.00017, 0.987093, 1.01257)
+bones/5/rotation = Quaternion(-0.993875, 0.0390447, 0.0137168, -0.102469)
+bones/5/scale = Vector3(0.999997, 1.01161, 0.999999)
+bones/7/rotation = Quaternion(0.126189, -0.842491, 0.366638, 0.373982)
+bones/7/scale = Vector3(0.999918, 0.994493, 0.994249)
+bones/8/position = Vector3(-0.00134194, 0.127652, -0.00156141)
+bones/8/rotation = Quaternion(-0.0620498, 0.945872, 0.318395, 0.0100951)
+bones/8/scale = Vector3(1.00002, 0.994478, 1.00548)
+bones/10/rotation = Quaternion(-0.111003, 0.00328101, 0.000366473, 0.993815)
+bones/12/rotation = Quaternion(-0.128712, -0.00670248, -0.000862285, 0.991659)
+bones/13/rotation = Quaternion(-0.456895, 0.617602, -0.497854, -0.402437)
+bones/14/rotation = Quaternion(0.432506, 0.520881, 0.37008, 0.636131)
+bones/15/rotation = Quaternion(0.290633, 0.129201, 0.216496, 0.923022)
+bones/16/rotation = Quaternion(0.0142918, 0.282297, -0.019364, 0.959025)
+bones/20/rotation = Quaternion(-0.713071, 0.123661, -0.0286149, 0.689506)
+bones/21/rotation = Quaternion(-0.585551, -0.0207593, 0.00946849, 0.810314)
+bones/29/rotation = Quaternion(0.455839, 0.618461, -0.496615, 0.403844)
+bones/30/rotation = Quaternion(-0.432523, 0.520913, 0.369933, -0.636179)
+bones/31/rotation = Quaternion(0.290612, -0.129233, -0.216596, 0.923001)
+bones/32/rotation = Quaternion(0.0143227, -0.282114, 0.0197185, 0.959071)
+
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_wyl2q")
 
@@ -151,3 +184,14 @@ item_data = ExtResource("12_vn1us")
 [node name="LegendaryItemPickup" parent="ItemObject" instance=ExtResource("10_dtxi8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9367, 0.795845, -17.7435)
 item_data = ExtResource("13_x40f1")
+
+[node name="InventoryUi" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("15_0iswe")]
+visible = false
+inventory = NodePath("../PlayerTemplate/InventoryData")
+
+[node name="PausedUI" parent="." instance=ExtResource("16_ncgrs")]
+visible = false
+
+[editable path="PlayerTemplate"]
+[editable path="PlayerTemplate/mannequiny-0_4_0"]
+[editable path="InventoryUi"]

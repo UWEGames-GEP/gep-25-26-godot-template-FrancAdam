@@ -5,6 +5,8 @@ class_name InventoryData
 
 @export var items : Array[ItemData] = [] #@export is equivalent of [serialized field] in Unity
 
+signal inventory_updated
+
 enum SortOrder{
 	Ascending,
 	Descending
@@ -19,6 +21,7 @@ func addItem(item: ItemData) -> void:
 	print("Added item:", item.item_name)
 	var inventory_size = items.size()
 	print("inventory size: " + str(inventory_size))
+	inventory_updated.emit()
 
 func removeItem(item: ItemData) ->void:
 	# spawn back into world
@@ -39,6 +42,7 @@ func removeItem(item: ItemData) ->void:
 	
 	#debug
 	print(str(item.item_name) + " (" + str(item.rarity) + ") removed from inventory")
+	inventory_updated.emit()
 
 func removeFirst():
 	if items.size() > 0:

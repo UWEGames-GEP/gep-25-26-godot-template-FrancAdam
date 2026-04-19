@@ -3,6 +3,7 @@ extends Node3D
 # Allows to select the player mesh from the inspector
 #@export_node_path(Node3D) var PlayerCharacterMesh: NodePath
 #@onready var player_mesh = get_node(PlayerCharacterMesh)
+@export var state_manager : GameManager 
 
 var camrot_h = 0
 var camrot_v = 0
@@ -14,15 +15,24 @@ var v_sensitivity = .01
 var h_acceleration = 10
 var v_acceleration = 10
 var joyview = Vector2()
+var can_look = bool(true)
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	# connects the signal from manager to toggleLook
+	state_manager.inventory_state_changed.connect(toggleLook) 
+	
+# my custom function that toggles a boolean when a signal is sent out
+func toggleLook() -> void:
+	can_look = !can_look
+	print("ran")
 	
 func _input(event):
-	if event is InputEventMouseMotion:
-	
-		camrot_h += -event.relative.x * h_sensitivity * 0.65
-		camrot_v += event.relative.y * v_sensitivity * 0.65
+	if can_look:
+		if event is InputEventMouseMotion:
+		
+			camrot_h += -event.relative.x * h_sensitivity * 0.65
+			camrot_v += event.relative.y * v_sensitivity * 0.65
 		
 #func _joystick_input():
 	#if (Input.is_action_pressed("lookup") ||  Input.is_action_pressed("lookdown") ||  Input.is_action_pressed("lookleft") ||  Input.is_action_pressed("lookright")):
