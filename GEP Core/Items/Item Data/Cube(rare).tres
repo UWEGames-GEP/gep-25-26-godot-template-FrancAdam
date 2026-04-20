@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dph10pkuj8avf"]
 
 [ext_resource type="Script" uid="uid://cwb153asyups4" path="res://Scripts/Inventory/ItemData.gd" id="1_1yx1v"]
-[ext_resource type="PackedScene" uid="uid://cccios421qabb" path="res://GEP Core/Items/ItemPickup.tscn" id="1_yy6ox"]
+[ext_resource type="PackedScene" uid="uid://cccios421qabb" path="res://GEP Core/Items/CubePickup.tscn" id="1_yy6ox"]
 
 [resource]
 script = ExtResource("1_1yx1v")
-item_name = "Rare Cube"
+item_name = "Cube"
 pickupable = true
 rarity = 1
 scene = ExtResource("1_yy6ox")

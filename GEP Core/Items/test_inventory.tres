@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="InventoryDataResource" load_steps=7 format=3 uid="uid://doija8qmragm6"]
 
 [ext_resource type="Script" uid="uid://cwb153asyups4" path="res://Scripts/Inventory/ItemData.gd" id="1_ye1sx"]
-[ext_resource type="Resource" uid="uid://cjlvxls5twmor" path="res://GEP Core/Items/Item Data/common_cube.tres" id="2_8wlab"]
+[ext_resource type="Resource" uid="uid://cjlvxls5twmor" path="res://GEP Core/Items/Item Data/Cube(common).tres" id="2_8wlab"]
 [ext_resource type="Script" uid="uid://de1dwr55xlroe" path="res://Scripts/Inventory/InventoryDataResource.gd" id="2_42wur"]
-[ext_resource type="Resource" uid="uid://b7vpcr5dm5k34" path="res://GEP Core/Items/Item Data/legendary_cube.tres" id="3_pp30w"]
-[ext_resource type="Resource" uid="uid://dph10pkuj8avf" path="res://GEP Core/Items/Item Data/rare_cube.tres" id="4_k5d3y"]
-[ext_resource type="Resource" uid="uid://dlj7vrgq8r1" path="res://GEP Core/Items/Item Data/epic_cube.tres" id="5_1rg8j"]
+[ext_resource type="Resource" uid="uid://b7vpcr5dm5k34" path="res://GEP Core/Items/Item Data/Cube(legendary).tres" id="3_pp30w"]
+[ext_resource type="Resource" uid="uid://dph10pkuj8avf" path="res://GEP Core/Items/Item Data/Cube(rare).tres" id="4_k5d3y"]
+[ext_resource type="Resource" uid="uid://dlj7vrgq8r1" path="res://GEP Core/Items/Item Data/Cube(epic).tres" id="5_1rg8j"]
 
 [resource]
 script = ExtResource("2_42wur")

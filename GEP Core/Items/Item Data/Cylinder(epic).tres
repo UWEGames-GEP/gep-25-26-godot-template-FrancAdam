@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://duc3rw21rkwel"]
+
+[ext_resource type="PackedScene" uid="uid://dx2irx8bk8u0l" path="res://GEP Core/Items/CylinderPickup.tscn" id="1_m8cc5"]
+[ext_resource type="Script" uid="uid://cwb153asyups4" path="res://Scripts/Inventory/ItemData.gd" id="1_mej3m"]
+
+[resource]
+script = ExtResource("1_mej3m")
+item_name = "Cylinder"
+pickupable = true
+rarity = 2
+scene = ExtResource("1_m8cc5")
+metadata/_custom_type_script = "uid://cwb153asyups4"

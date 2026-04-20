@@ -2,18 +2,18 @@ extends Node
 const TEST_INVENTORY = preload("res://GEP Core/Items/test_inventory.tres")
 const ItemData = preload("res://Scripts/Inventory/ItemData.gd")
 
-#enum SortType{
-	#BUBBLE,
-	#INSERT
-#}
-#var last_sort:= SortType.BUBBLE
+enum SortOrder{
+	ASCENDING,
+	DESCENDING
+}
 
 func _ready() -> void:
-	print("before: ")
-	printArr(TEST_INVENTORY.InventoryArray)
-	insertion_sort(TEST_INVENTORY.InventoryArray, 1)
-	print("after: ")
-	printArr(TEST_INVENTORY.InventoryArray)
+	#print("before: ")
+	#printArr(TEST_INVENTORY.InventoryArray)
+	#insertion_sort(TEST_INVENTORY.InventoryArray, 1)
+	#print("after: ")
+	#printArr(TEST_INVENTORY.InventoryArray)
+	pass
 
 #debug
 func printArr(arr: Array):
@@ -21,7 +21,7 @@ func printArr(arr: Array):
 		print(i.item_name)
 
 # simple sort that sorts the array alphabetically
-func bubble_sort(arr : Array, sort_order : bool):
+func bubble_sort(arr : Array, sort_order : SortOrder):
 	var n = arr.size()
 	var swapped: bool
 	
@@ -29,13 +29,13 @@ func bubble_sort(arr : Array, sort_order : bool):
 		swapped = false
 		for j in range(n-i-1):
 			match sort_order:
-				false: #Ascending
+				SortOrder.ASCENDING: #Ascending
 					if arr[j].item_name > arr[j+1].item_name:
 						var temp: ItemData = arr[j]
 						arr[j] = arr[j+1]
 						arr[j+1] = temp
 						swapped = true
-				true: #Descending
+				SortOrder.DESCENDING: #Descending
 					if arr[j].item_name < arr[j+1].item_name:
 						var temp: ItemData = arr[j]
 						arr[j] = arr[j+1]
@@ -43,20 +43,21 @@ func bubble_sort(arr : Array, sort_order : bool):
 						swapped = true
 		if !swapped:
 			break
-			
-func insertion_sort(arr: Array, sort_order : bool):
+
+# Sorts by Rarity
+func insertion_sort(arr: Array, sort_order : SortOrder): # Sorts by Rarity
 	var n = arr.size()
 	
 	for i in range(n):
 		var key: ItemData = arr[i]
 		var j = i - 1
 		match sort_order:
-			false:
+			SortOrder.ASCENDING:
 				while j >= 0 && arr[j].rarity > key.rarity:
 					arr[j + 1] = arr[j]
 					j = j - 1
 				arr[j + 1] = key
-			true:
+			SortOrder.DESCENDING:
 				while j >= 0 && arr[j].rarity < key.rarity:
 					arr[j + 1] = arr[j]
 					j = j - 1

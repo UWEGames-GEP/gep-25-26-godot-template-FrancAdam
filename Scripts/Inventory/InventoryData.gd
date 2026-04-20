@@ -1,11 +1,19 @@
 extends Node
 class_name InventoryData
 
-#@onready var inventoryUI = get_node("GameManager")
+enum SortType{
+	BUBBLE,
+	INSERT
+}
 
 @export var items : Array[ItemData] = [] #@export is equivalent of [serialized field] in Unity
-
 signal inventory_updated
+
+var sort_order: SortingAlg.SortOrder
+var last_sort: SortType
+
+func _ready() -> void:
+	sort_order = SortingAlg.SortOrder.ASCENDING
 
 func addItem(item: ItemData) -> void:
 	items.append(item)
@@ -40,11 +48,34 @@ func removeItem(item: ItemData) ->void:
 func removeFirst():
 	if items.size() > 0:
 		removeItem(items[0])
-		
+
+func alphabeticalSort():
+	SortingAlg.bubble_sort(items, sort_order)
+	inventory_updated.emit()
+	last_sort = SortType.BUBBLE
+
+func raritySort():
+	SortingAlg.insertion_sort(items, sort_order)
+	inventory_updated.emit()
+	last_sort = SortType.INSERT
+
+func toggleSort(): # toggle for sort order
+	match sort_order: # changes sort order
+		SortingAlg.SortOrder.ASCENDING:
+			sort_order = SortingAlg.SortOrder.DESCENDING
+		SortingAlg.SortOrder.DESCENDING:
+			sort_order = SortingAlg.SortOrder.ASCENDING
+	match last_sort: # reruns the last sort that was used to update inventory after toggleSort
+		SortType.BUBBLE:
+			alphabeticalSort()
+		SortType.INSERT:
+			raritySort()
+
 		
 func _input(event):
 	if (event.is_action_pressed("G")):
-		removeFirst()
+		alphabeticalSort()
 	if (event.is_action_pressed("H - Print array")):
-		for item in items:
-			print(item.item_name)
+		raritySort()
+	if (event.is_action_pressed("SortToggle")):
+		toggleSort()
