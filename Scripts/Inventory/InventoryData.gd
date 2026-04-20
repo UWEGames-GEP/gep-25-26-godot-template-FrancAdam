@@ -7,15 +7,6 @@ class_name InventoryData
 
 signal inventory_updated
 
-enum SortOrder{
-	Ascending,
-	Descending
-}
-
-var sord_order : SortOrder = SortOrder.Ascending
-var last_sort := 0
-
-
 func addItem(item: ItemData) -> void:
 	items.append(item)
 	print("Added item:", item.item_name)
@@ -34,10 +25,12 @@ func removeItem(item: ItemData) ->void:
 	var instance = item.scene.instantiate() # initiate node
 	instance.global_transform.origin = spawn_pos # set position
 	
-	instance.item_data = item
+	instance.item_data = item # sets its item data
 	
-	get_tree().current_scene.add_child(instance) # sets the instance as a child of the current scene
+	# adds the item back into the world under the node ItemObject
+	get_tree().current_scene.get_node("ItemObject").add_child(instance) 
 	
+	# removes the spawned item from the items array
 	items.erase(item) # equivalent of .remove() from Unity
 	
 	#debug

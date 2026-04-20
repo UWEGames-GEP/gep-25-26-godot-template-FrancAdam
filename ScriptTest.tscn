@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dliogighc0104"]
+
+[ext_resource type="Script" uid="uid://can71x0aew6mw" path="res://Scripts/SortingAlg.gd" id="1_v5tab"]
+
+[node name="ScriptTest" type="Node"]
+script = ExtResource("1_v5tab")
