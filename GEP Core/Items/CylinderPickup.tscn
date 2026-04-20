@@ -6,7 +6,7 @@
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_w3bpb"]
 
-[node name="ItemPickup" type="Area3D"]
+[node name="CylinderPickup" type="Area3D"]
 script = ExtResource("1_w3bpb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

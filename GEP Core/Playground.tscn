@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ngecyo0pmaed"]
+[gd_scene load_steps=25 format=3 uid="uid://ngecyo0pmaed"]
 
 [ext_resource type="Sky" uid="uid://cbbdl23q60wak" path="res://addons/ThirdPersonTemplate/Environments/SkyBox.res" id="1_rfwro"]
 [ext_resource type="Script" uid="uid://kr85c4gpx2g5" path="res://Scripts/GameManager.gd" id="1_wyl2q"]
@@ -12,12 +12,16 @@
 [ext_resource type="PackedScene" uid="uid://cccios421qabb" path="res://GEP Core/Items/CubePickup.tscn" id="10_dtxi8"]
 [ext_resource type="Resource" uid="uid://cjlvxls5twmor" path="res://GEP Core/Items/Item Data/Cube(common).tres" id="11_iywyu"]
 [ext_resource type="Resource" uid="uid://dlj7vrgq8r1" path="res://GEP Core/Items/Item Data/Cube(epic).tres" id="12_vn1us"]
-[ext_resource type="Resource" uid="uid://dph10pkuj8avf" path="res://GEP Core/Items/Item Data/Cube(rare).tres" id="12_x40f1"]
-[ext_resource type="Resource" uid="uid://b7vpcr5dm5k34" path="res://GEP Core/Items/Item Data/Cube(legendary).tres" id="13_x40f1"]
 [ext_resource type="PackedScene" uid="uid://5y7n5eiraaoj" path="res://GEP Core/UI/InventoryUI.tscn" id="15_0iswe"]
 [ext_resource type="Resource" uid="uid://duc3rw21rkwel" path="res://GEP Core/Items/Item Data/Cylinder(epic).tres" id="15_bdyhv"]
 [ext_resource type="PackedScene" uid="uid://dx2irx8bk8u0l" path="res://GEP Core/Items/CylinderPickup.tscn" id="15_xjl5m"]
+[ext_resource type="PackedScene" uid="uid://s5576s8wrvxp" path="res://GEP Core/Items/SpherePickup.tscn" id="15_y57u3"]
+[ext_resource type="Resource" uid="uid://8g2e4e450d86" path="res://GEP Core/Items/Item Data/Capsule(rare).tres" id="16_8mp24"]
 [ext_resource type="PackedScene" uid="uid://c04a8bt7rnvjt" path="res://GEP Core/UI/PausedUI.tscn" id="16_ncgrs"]
+[ext_resource type="Resource" uid="uid://e7ndr3s25ec" path="res://GEP Core/Items/Item Data/Sphere(legendary).tres" id="16_q4fwu"]
+[ext_resource type="PackedScene" uid="uid://ds4s6yuyb6j8d" path="res://GEP Core/Items/PrismPickup.tscn" id="17_8mp24"]
+[ext_resource type="Resource" uid="uid://q80gl1br1l4u" path="res://GEP Core/Items/Item Data/Prism(rare).tres" id="18_vinpc"]
+[ext_resource type="PackedScene" uid="uid://bhawr150c43sl" path="res://GEP Core/Items/CapsulePickup.tscn" id="19_q4fwu"]
 
 [sub_resource type="GDScript" id="GDScript_rfwro"]
 script/source = "extends Node3D
@@ -139,84 +143,61 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21.6178)
 state_manager = NodePath("../../GameManager")
 
 [node name="Skeleton3D" parent="PlayerTemplate/mannequiny-0_4_0/root" index="0"]
-bones/0/position = Vector3(-0.00730736, 0.966038, 0.253796)
-bones/0/rotation = Quaternion(0.130706, 0.14469, -0.0101098, 0.980754)
-bones/1/rotation = Quaternion(0.752597, 0.0999467, 0.650613, 0.0176378)
-bones/1/scale = Vector3(0.999998, 1.02758, 1)
-bones/2/rotation = Quaternion(-3.89479e-05, 5.4367e-05, 0.0025685, 0.999997)
-bones/3/rotation = Quaternion(0.281264, 0.532087, -0.311996, 0.735141)
-bones/3/scale = Vector3(0.999288, 0.988936, 0.985548)
-bones/4/rotation = Quaternion(0.104614, 0.942986, 0.31491, -0.0257957)
-bones/4/scale = Vector3(1.00017, 0.987125, 1.01254)
-bones/5/rotation = Quaternion(-0.994027, 0.0386867, 0.0136148, -0.101133)
-bones/5/scale = Vector3(0.999997, 1.00954, 0.999999)
-bones/6/rotation = Quaternion(-3.23676e-06, -2.12008e-05, -0.00260432, 0.999997)
-bones/7/rotation = Quaternion(0.126668, -0.84277, 0.367259, 0.372579)
-bones/7/scale = Vector3(0.999925, 0.995376, 0.995138)
-bones/8/position = Vector3(-0.00108265, 0.127659, -0.00112528)
-bones/8/rotation = Quaternion(-0.0589297, 0.946214, 0.318013, 0.00860387)
-bones/8/scale = Vector3(1.00002, 0.995365, 1.00461)
-bones/9/rotation = Quaternion(-0.121236, -0.147591, 0.0121751, 0.981514)
-bones/10/rotation = Quaternion(-0.0804693, 0.00329071, 0.000265665, 0.996752)
-bones/11/rotation = Quaternion(0.313699, 0.00638646, 0.0021101, 0.949499)
-bones/12/rotation = Quaternion(-0.159067, -0.00667288, -0.00106744, 0.987245)
-bones/13/rotation = Quaternion(-0.463074, 0.613048, -0.5038, -0.394868)
-bones/14/rotation = Quaternion(0.423901, 0.523628, 0.365708, 0.642167)
-bones/15/rotation = Quaternion(0.294387, 0.120826, 0.24211, 0.916581)
-bones/16/rotation = Quaternion(0.0321935, 0.282512, -0.00829002, 0.958688)
-bones/17/rotation = Quaternion(0.0464701, -0.786923, 0.317009, 0.52735)
-bones/18/rotation = Quaternion(-0.0242228, -0.306659, 0.0625978, 0.94945)
-bones/19/rotation = Quaternion(-0.00920789, 0.438728, 0.00859629, 0.898532)
-bones/20/rotation = Quaternion(-0.713075, 0.123738, -0.0284657, 0.689495)
-bones/21/rotation = Quaternion(-0.585527, -0.0206274, 0.00937935, 0.810336)
-bones/22/rotation = Quaternion(-0.587469, -0.00381375, -0.00984868, 0.809178)
-bones/23/rotation = Quaternion(-0.450182, 0.161463, -0.0363564, 0.877464)
-bones/24/rotation = Quaternion(-0.64571, -0.00769497, -0.0194433, 0.763297)
-bones/25/rotation = Quaternion(-0.639766, -0.0177411, -0.0200563, 0.768103)
-bones/26/rotation = Quaternion(-0.425603, 0.144516, -0.0385396, 0.892464)
-bones/27/rotation = Quaternion(-0.583527, 0.00193095, -0.0536865, 0.810315)
-bones/28/rotation = Quaternion(-0.59928, 0.00781384, -0.029632, 0.799953)
-bones/29/rotation = Quaternion(0.464478, 0.612088, -0.504945, 0.393243)
-bones/30/rotation = Quaternion(-0.423917, 0.523654, 0.36557, -0.642214)
-bones/31/rotation = Quaternion(0.294377, -0.120859, -0.242202, 0.916555)
-bones/32/rotation = Quaternion(0.0322266, -0.282338, 0.00864665, 0.958735)
-bones/33/rotation = Quaternion(0.0467031, 0.787035, -0.316929, 0.52721)
-bones/34/rotation = Quaternion(-0.0241585, 0.306849, -0.0624171, 0.949402)
-bones/35/rotation = Quaternion(-0.00919869, -0.43853, -0.00836447, 0.898631)
-bones/36/rotation = Quaternion(-0.713035, -0.123602, 0.0292087, 0.68953)
-bones/37/rotation = Quaternion(-0.585551, 0.0207869, -0.00922039, 0.810316)
-bones/38/rotation = Quaternion(-0.587466, 0.00385781, 0.0101542, 0.809176)
-bones/39/rotation = Quaternion(-0.450104, -0.161248, 0.0368453, 0.877524)
-bones/40/rotation = Quaternion(-0.645696, 0.00768164, 0.0197525, 0.763301)
-bones/41/rotation = Quaternion(-0.639762, 0.0177705, 0.0203457, 0.768098)
-bones/42/rotation = Quaternion(-0.425481, -0.144288, 0.0390203, 0.892538)
-bones/43/rotation = Quaternion(-0.583503, -0.00190839, 0.0540069, 0.810311)
-bones/44/rotation = Quaternion(-0.599265, -0.00776474, 0.0298958, 0.799954)
+bones/0/position = Vector3(-0.00730741, 0.965605, 0.255445)
+bones/1/rotation = Quaternion(0.752733, 0.0995149, 0.650547, 0.0166722)
+bones/1/scale = Vector3(0.999998, 1.02686, 1)
+bones/3/rotation = Quaternion(0.281424, 0.531867, -0.312904, 0.734853)
+bones/3/scale = Vector3(0.999294, 0.989371, 0.985995)
+bones/4/rotation = Quaternion(0.104036, 0.943053, 0.314923, -0.0254968)
+bones/4/scale = Vector3(1.00017, 0.987534, 1.01214)
+bones/5/rotation = Quaternion(-0.994141, 0.0383751, 0.0135471, -0.100143)
+bones/5/scale = Vector3(0.999997, 1.00877, 0.999999)
+bones/7/rotation = Quaternion(0.126686, -0.84253, 0.368118, 0.372268)
+bones/7/scale = Vector3(0.999927, 0.995855, 0.9956)
+bones/8/position = Vector3(-0.000899273, 0.127663, -0.00080367)
+bones/8/rotation = Quaternion(-0.0582871, 0.946244, 0.318053, 0.00824559)
+bones/8/scale = Vector3(1.00002, 0.995836, 1.00414)
+bones/10/rotation = Quaternion(-0.0707777, 0.00329314, 0.000233666, 0.997487)
+bones/12/rotation = Quaternion(-0.168655, -0.00666218, -0.00113226, 0.985652)
+bones/13/rotation = Quaternion(-0.4672, 0.609915, -0.507789, -0.389716)
+bones/14/rotation = Quaternion(0.428369, 0.52198, 0.368373, 0.639013)
+bones/15/rotation = Quaternion(0.31447, 0.12736, 0.235121, 0.910827)
+bones/16/rotation = Quaternion(0.0597025, 0.282937, -0.0126084, 0.957196)
+bones/20/rotation = Quaternion(-0.713086, 0.12382, -0.028264, 0.689476)
+bones/21/rotation = Quaternion(-0.585492, -0.0204451, 0.00927023, 0.810367)
+bones/29/rotation = Quaternion(0.467313, 0.609924, -0.507692, 0.389692)
+bones/30/rotation = Quaternion(-0.430178, 0.521265, 0.369362, -0.63781)
+bones/31/rotation = Quaternion(0.314453, -0.127393, -0.235206, 0.910807)
+bones/32/rotation = Quaternion(0.0597435, -0.282776, 0.0129691, 0.957236)
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_wyl2q")
 
 [node name="ItemObject" type="Node" parent="."]
 
-[node name="CommonItemPickup" parent="ItemObject" instance=ExtResource("10_dtxi8")]
+[node name="CubePickup2" parent="ItemObject" instance=ExtResource("10_dtxi8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11225, -17.6602)
 item_data = ExtResource("11_iywyu")
 
-[node name="RareItemPickup" parent="ItemObject" instance=ExtResource("10_dtxi8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.66795, 0.695522, -17.6132)
-item_data = ExtResource("12_x40f1")
-
-[node name="EpicItemPickup" parent="ItemObject" instance=ExtResource("10_dtxi8")]
+[node name="CubePickup" parent="ItemObject" instance=ExtResource("10_dtxi8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.39258, 0.853332, -17.806)
 item_data = ExtResource("12_vn1us")
 
-[node name="LegendaryItemPickup" parent="ItemObject" instance=ExtResource("10_dtxi8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9367, 0.795845, -17.7435)
-item_data = ExtResource("13_x40f1")
-
-[node name="ItemPickup" parent="ItemObject" instance=ExtResource("15_xjl5m")]
+[node name="CylinderPickup" parent="ItemObject" instance=ExtResource("15_xjl5m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48138, 0.993063, -17.382)
 item_data = ExtResource("15_bdyhv")
+
+[node name="CapsulePickup" parent="ItemObject" instance=ExtResource("19_q4fwu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.79643, 1.19482, -16.8039)
+item_data = ExtResource("16_8mp24")
+
+[node name="PrismPickup" parent="ItemObject" instance=ExtResource("17_8mp24")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.88752, 0.69482, -17.7597)
+item_data = ExtResource("18_vinpc")
+
+[node name="SpherePickup" parent="ItemObject" instance=ExtResource("15_y57u3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46097, 0.426303, -17.3421)
+item_data = ExtResource("16_q4fwu")
 
 [node name="InventoryUi" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("15_0iswe")]
 visible = false
