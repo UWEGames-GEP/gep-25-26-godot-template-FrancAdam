@@ -2,14 +2,17 @@ extends StaticBody3D
 
 @export var player_template: CharacterBody3D 
 @onready var chest_inventory_ui: CanvasLayer = $ChestInventoryUI
-@onready var range: CollisionShape3D = $Range
+@onready var range: Area3D = $Range
+
+@onready var interact_prompt: CanvasLayer = $InteractPrompt
+@onready var label: Label = $InteractPrompt/Label
 
 signal chest_changed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
 	player_template.chest_state_changed.connect(openInventory)
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

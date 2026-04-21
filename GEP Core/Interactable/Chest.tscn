@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://vk3hjohpfyls"]
+[gd_scene load_steps=7 format=3 uid="uid://vk3hjohpfyls"]
 
 [ext_resource type="Script" uid="uid://c40t17v4v2jlg" path="res://Scripts/Interactable/chest.gd" id="1_qo8rd"]
 [ext_resource type="Script" uid="uid://cv47byddnx7t4" path="res://Scripts/Inventory/InventoryData.gd" id="2_lvqly"]
@@ -13,13 +13,8 @@ material = SubResource("StandardMaterial3D_npsxo")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rajkp"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_lvqly"]
-height = 2.72314
-radius = 1.21289
-
 [node name="Chest" type="StaticBody3D"]
 collision_layer = 5
-collision_mask = 0
 script = ExtResource("1_qo8rd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -63,10 +58,5 @@ offset_top = -262.0
 offset_right = -144.5
 offset_bottom = -112.0
 theme_override_constants/separation = 12
-
-[node name="Range" type="CollisionShape3D" parent="."]
-transform = Transform3D(2.65343, 0, 0, 0, 0.851416, 0, 0, 0, 2.69591, 0, 1.05509, 0)
-shape = SubResource("CylinderShape3D_lvqly")
-disabled = true
 
 [editable path="ChestInventoryUI"]

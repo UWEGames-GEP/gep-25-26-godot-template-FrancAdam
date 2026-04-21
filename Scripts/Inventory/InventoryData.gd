@@ -37,6 +37,7 @@ func addItem(item: ItemData) -> void:
 	print("inventory size: " + str(inventory_size))
 	inventory_updated.emit()
 
+
 func removeItem(item: ItemData) ->void:
 	# spawn back into world
 	# inventory is a child of player
