@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ngecyo0pmaed"]
+[gd_scene load_steps=26 format=3 uid="uid://ngecyo0pmaed"]
 
 [ext_resource type="Sky" uid="uid://cbbdl23q60wak" path="res://addons/ThirdPersonTemplate/Environments/SkyBox.res" id="1_rfwro"]
 [ext_resource type="Script" uid="uid://kr85c4gpx2g5" path="res://Scripts/GameManager.gd" id="1_wyl2q"]
@@ -21,7 +21,8 @@
 [ext_resource type="Resource" uid="uid://e7ndr3s25ec" path="res://GEP Core/Items/Item Data/Sphere(legendary).tres" id="16_q4fwu"]
 [ext_resource type="PackedScene" uid="uid://ds4s6yuyb6j8d" path="res://GEP Core/Items/PrismPickup.tscn" id="17_8mp24"]
 [ext_resource type="Resource" uid="uid://q80gl1br1l4u" path="res://GEP Core/Items/Item Data/Prism(rare).tres" id="18_vinpc"]
-[ext_resource type="PackedScene" uid="uid://bhawr150c43sl" path="res://GEP Core/Items/CapsulePickup.tscn" id="19_q4fwu"]
+[ext_resource type="PackedScene" uid="uid://vk3hjohpfyls" path="res://GEP Core/Interactable/Chest.tscn" id="23_vinpc"]
+[ext_resource type="Script" uid="uid://cwb153asyups4" path="res://Scripts/Inventory/ItemData.gd" id="24_y5db8"]
 
 [sub_resource type="GDScript" id="GDScript_rfwro"]
 script/source = "extends Node3D
@@ -137,66 +138,60 @@ size = Vector3(22, 10, 14)
 material = ExtResource("7_x40f1")
 
 [node name="PlayerTemplate" parent="." instance=ExtResource("8_0iswe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21.6178)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22.1097)
+collision_layer = 1
 
 [node name="Camroot" parent="PlayerTemplate" index="3" node_paths=PackedStringArray("state_manager")]
 state_manager = NodePath("../../GameManager")
 
 [node name="Skeleton3D" parent="PlayerTemplate/mannequiny-0_4_0/root" index="0"]
-bones/0/position = Vector3(-0.00730741, 0.965605, 0.255445)
-bones/1/rotation = Quaternion(0.752733, 0.0995149, 0.650547, 0.0166722)
-bones/1/scale = Vector3(0.999998, 1.02686, 1)
-bones/3/rotation = Quaternion(0.281424, 0.531867, -0.312904, 0.734853)
-bones/3/scale = Vector3(0.999294, 0.989371, 0.985995)
-bones/4/rotation = Quaternion(0.104036, 0.943053, 0.314923, -0.0254968)
-bones/4/scale = Vector3(1.00017, 0.987534, 1.01214)
-bones/5/rotation = Quaternion(-0.994141, 0.0383751, 0.0135471, -0.100143)
-bones/5/scale = Vector3(0.999997, 1.00877, 0.999999)
-bones/7/rotation = Quaternion(0.126686, -0.84253, 0.368118, 0.372268)
-bones/7/scale = Vector3(0.999927, 0.995855, 0.9956)
-bones/8/position = Vector3(-0.000899273, 0.127663, -0.00080367)
-bones/8/rotation = Quaternion(-0.0582871, 0.946244, 0.318053, 0.00824559)
-bones/8/scale = Vector3(1.00002, 0.995836, 1.00414)
-bones/10/rotation = Quaternion(-0.0707777, 0.00329314, 0.000233666, 0.997487)
-bones/12/rotation = Quaternion(-0.168655, -0.00666218, -0.00113226, 0.985652)
-bones/13/rotation = Quaternion(-0.4672, 0.609915, -0.507789, -0.389716)
-bones/14/rotation = Quaternion(0.428369, 0.52198, 0.368373, 0.639013)
-bones/15/rotation = Quaternion(0.31447, 0.12736, 0.235121, 0.910827)
-bones/16/rotation = Quaternion(0.0597025, 0.282937, -0.0126084, 0.957196)
-bones/20/rotation = Quaternion(-0.713086, 0.12382, -0.028264, 0.689476)
-bones/21/rotation = Quaternion(-0.585492, -0.0204451, 0.00927023, 0.810367)
-bones/29/rotation = Quaternion(0.467313, 0.609924, -0.507692, 0.389692)
-bones/30/rotation = Quaternion(-0.430178, 0.521265, 0.369362, -0.63781)
-bones/31/rotation = Quaternion(0.314453, -0.127393, -0.235206, 0.910807)
-bones/32/rotation = Quaternion(0.0597435, -0.282776, 0.0129691, 0.957236)
+bones/0/position = Vector3(-0.00730732, 0.967672, 0.251857)
+bones/1/rotation = Quaternion(0.752482, 0.10025, 0.650677, 0.018436)
+bones/1/scale = Vector3(0.999998, 1.02887, 1)
+bones/3/rotation = Quaternion(0.28139, 0.531584, -0.311294, 0.735754)
+bones/3/scale = Vector3(0.999283, 0.988712, 0.985311)
+bones/4/rotation = Quaternion(0.108851, 0.942585, 0.314521, -0.0275985)
+bones/4/scale = Vector3(1.00017, 0.986972, 1.01269)
+bones/5/rotation = Quaternion(-0.993847, 0.0391207, 0.0137317, -0.102709)
+bones/5/scale = Vector3(0.999997, 1.01176, 0.999999)
+bones/7/rotation = Quaternion(0.126164, -0.842545, 0.366375, 0.374126)
+bones/7/scale = Vector3(0.999918, 0.994341, 0.994103)
+bones/8/position = Vector3(-0.00135045, 0.127652, -0.00157912)
+bones/8/rotation = Quaternion(-0.0624202, 0.94585, 0.318379, 0.0102998)
+bones/8/scale = Vector3(1.00002, 0.994327, 1.00563)
+bones/10/rotation = Quaternion(-0.108536, 0.00328191, 0.000358329, 0.994087)
+bones/12/rotation = Quaternion(-0.131173, -0.00670032, -0.000878914, 0.991337)
+bones/13/rotation = Quaternion(-0.455323, 0.618736, -0.496406, -0.404261)
+bones/14/rotation = Quaternion(0.427199, 0.52264, 0.367261, 0.639897)
+bones/15/rotation = Quaternion(0.284009, 0.12287, 0.230542, 0.922547)
+bones/16/rotation = Quaternion(0.0095738, 0.282085, -0.00950896, 0.959294)
+bones/20/rotation = Quaternion(-0.713072, 0.123686, -0.028566, 0.689502)
+bones/21/rotation = Quaternion(-0.585543, -0.020716, 0.00943926, 0.810322)
+bones/29/rotation = Quaternion(0.456325, 0.618111, -0.49708, 0.403258)
+bones/30/rotation = Quaternion(-0.427197, 0.522684, 0.367138, -0.639933)
+bones/31/rotation = Quaternion(0.283996, -0.122901, -0.230641, 0.922522)
+bones/32/rotation = Quaternion(0.00960174, -0.281902, 0.00986191, 0.959344)
 
-[node name="GameManager" type="Node" parent="."]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("chest")]
 script = ExtResource("1_wyl2q")
+chest = NodePath("../Chest")
 
 [node name="ItemObject" type="Node" parent="."]
 
-[node name="CubePickup2" parent="ItemObject" instance=ExtResource("10_dtxi8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11225, -17.6602)
-item_data = ExtResource("11_iywyu")
-
 [node name="CubePickup" parent="ItemObject" instance=ExtResource("10_dtxi8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.39258, 0.853332, -17.806)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0351, 0.853332, -5.47873)
 item_data = ExtResource("12_vn1us")
 
 [node name="CylinderPickup" parent="ItemObject" instance=ExtResource("15_xjl5m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48138, 0.993063, -17.382)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.14027, 0.993064, -12.0914)
 item_data = ExtResource("15_bdyhv")
 
-[node name="CapsulePickup" parent="ItemObject" instance=ExtResource("19_q4fwu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.79643, 1.19482, -16.8039)
-item_data = ExtResource("16_8mp24")
-
 [node name="PrismPickup" parent="ItemObject" instance=ExtResource("17_8mp24")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.88752, 0.69482, -17.7597)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.88752, 0.69482, 0.716778)
 item_data = ExtResource("18_vinpc")
 
 [node name="SpherePickup" parent="ItemObject" instance=ExtResource("15_y57u3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46097, 0.426303, -17.3421)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.01141, 6.79237, -6.55195)
 item_data = ExtResource("16_q4fwu")
 
 [node name="InventoryUi" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("15_0iswe")]
@@ -206,6 +201,18 @@ inventory = NodePath("../PlayerTemplate/InventoryData")
 [node name="PausedUI" parent="." instance=ExtResource("16_ncgrs")]
 visible = false
 
+[node name="Chest" parent="." node_paths=PackedStringArray("player_template") instance=ExtResource("23_vinpc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.280145, -15.0426)
+player_template = NodePath("../PlayerTemplate")
+
+[node name="ChestInventoryData" parent="Chest" index="2" node_paths=PackedStringArray("main_inventory")]
+inventory_type = 1
+main_inventory = NodePath("../../PlayerTemplate/InventoryData")
+items = Array[ExtResource("24_y5db8")]([ExtResource("16_q4fwu"), ExtResource("11_iywyu"), ExtResource("16_8mp24")])
+
 [editable path="PlayerTemplate"]
+[editable path="PlayerTemplate/Camroot"]
 [editable path="PlayerTemplate/mannequiny-0_4_0"]
 [editable path="InventoryUi"]
+[editable path="Chest"]
+[editable path="Chest/ChestInventoryUI"]

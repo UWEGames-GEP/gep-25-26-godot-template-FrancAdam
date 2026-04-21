@@ -18,7 +18,7 @@ func setItem(item: ItemData):
 
 func _on_pressed():
 	if item_data and inventory:
-		inventory.removeItem(item_data)
+		inventory.buttonPressed(item_data)
 		
 
 func rarityToString(rarity: int) -> String:

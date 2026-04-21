@@ -5,7 +5,12 @@ enum SortType{
 	BUBBLE,
 	INSERT
 }
-
+enum InventoryType{
+	PLAYER,
+	CHEST
+}
+@export var inventory_type: InventoryType
+@export var main_inventory: InventoryData
 @export var items : Array[ItemData] = [] #@export is equivalent of [serialized field] in Unity
 signal inventory_updated
 
@@ -14,6 +19,16 @@ var last_sort: SortType
 
 func _ready() -> void:
 	sort_order = SortingAlg.SortOrder.ASCENDING
+
+func buttonPressed(item: ItemData) -> void:
+	match inventory_type:
+		InventoryType.PLAYER:
+			removeItem(item)
+		InventoryType.CHEST:
+			if main_inventory:
+				main_inventory.addItem(item)
+				items.erase(item)
+				inventory_updated.emit()
 
 func addItem(item: ItemData) -> void:
 	items.append(item)

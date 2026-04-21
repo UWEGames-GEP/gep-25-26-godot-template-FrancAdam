@@ -25,7 +25,6 @@ func _ready():
 # my custom function that toggles a boolean when a signal is sent out
 func toggleLook() -> void:
 	can_look = !can_look
-	print("ran")
 	
 func _input(event):
 	if can_look:

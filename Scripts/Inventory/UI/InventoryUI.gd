@@ -18,6 +18,7 @@ func _ready() -> void:
 	alphabetical_sort_button.pressed.connect(inventory.alphabeticalSort)
 	rarity_sort_button.pressed.connect(inventory.raritySort)
 	sort_order_toggle.pressed.connect(inventory.toggleSort)
+	refreshUI()
 
 func refreshUI() -> void: 
 	# clear old items

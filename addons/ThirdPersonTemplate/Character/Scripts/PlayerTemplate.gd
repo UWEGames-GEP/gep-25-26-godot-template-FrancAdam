@@ -12,9 +12,8 @@ extends CharacterBody3D
 
 ### my code
 @onready var inventory = $InventoryData #assign in inspector
-### inventory getter function
-func getInventory():
-	return inventory
+@onready var interact_ray: RayCast3D = $"mannequiny-0_4_0/InteractRay"
+signal chest_state_changed
 ### end of my code
 
 # Gamplay mechanics and Inspector tweakables
@@ -61,9 +60,20 @@ func _ready(): # Camera based Rotation
 func _input(event): # All major mouse and button input events
 	if event is InputEventMouseMotion:
 		aim_turn = -event.relative.x * 0.015 # animates player with mouse movement while aiming 
+	if event.is_action_pressed("Interact"):
+		interact()
 	
 	#if event.is_action_pressed("aim"): # Aim button triggers a strafe walk and camera mechanic
 		#direction = $Camroot/h.global_transform.basis.z
+
+### inventory getter function (mine)
+func getInventory():
+	return inventory
+### Interact function (mine)
+func interact() -> void:
+	if interact_ray.is_colliding():
+		print("Interacted ", interact_ray.get_collider())
+		chest_state_changed.emit()
 
 func sprint_and_roll():
 ## Dodge button input with dash and interruption to basic actions

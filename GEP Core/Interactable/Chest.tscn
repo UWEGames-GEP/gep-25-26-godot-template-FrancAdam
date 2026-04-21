@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://vk3hjohpfyls"]
+
+[ext_resource type="Script" uid="uid://c40t17v4v2jlg" path="res://Scripts/Interactable/chest.gd" id="1_qo8rd"]
+[ext_resource type="Script" uid="uid://cv47byddnx7t4" path="res://Scripts/Inventory/InventoryData.gd" id="2_lvqly"]
+[ext_resource type="PackedScene" uid="uid://dvl6lnxkwy53" path="res://GEP Core/UI/ChestInventoryUI.tscn" id="3_lvqly"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_npsxo"]
+albedo_color = Color(0.524193, 0.316831, 0.246659, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_npsxo"]
+material = SubResource("StandardMaterial3D_npsxo")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rajkp"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lvqly"]
+height = 2.72314
+radius = 1.21289
+
+[node name="Chest" type="StaticBody3D"]
+collision_layer = 5
+collision_mask = 0
+script = ExtResource("1_qo8rd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.89104, 0, 0, 0, 1.0365, 0, 0, 0, 1.08179, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_npsxo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.0447, 0, 0, 0, 1.12073, 0, 0, 0, 1.1697, 0, 0.5, 0)
+shape = SubResource("ConcavePolygonShape3D_rajkp")
+
+[node name="ChestInventoryData" type="Node" parent="."]
+script = ExtResource("2_lvqly")
+metadata/_custom_type_script = "uid://cv47byddnx7t4"
+
+[node name="ChestInventoryUI" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("3_lvqly")]
+visible = false
+inventory = NodePath("../ChestInventoryData")
+
+[node name="Panel" parent="ChestInventoryUI" index="0"]
+offset_left = 14.0
+offset_top = 28.0
+offset_right = -669.0
+offset_bottom = -82.0
+
+[node name="VBoxContainer" parent="ChestInventoryUI/Panel" index="0"]
+offset_left = -116.5
+offset_top = -102.0
+offset_right = 124.5
+offset_bottom = 246.0
+
+[node name="InventoryLabel" parent="ChestInventoryUI/Panel" index="1"]
+offset_left = -118.5
+offset_top = 36.0
+offset_right = 137.5
+offset_bottom = 112.0
+text = "Chest"
+
+[node name="SortButtons" parent="ChestInventoryUI/Panel" index="2"]
+offset_left = -226.5
+offset_top = -262.0
+offset_right = -144.5
+offset_bottom = -112.0
+theme_override_constants/separation = 12
+
+[node name="Range" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.65343, 0, 0, 0, 0.851416, 0, 0, 0, 2.69591, 0, 1.05509, 0)
+shape = SubResource("CylinderShape3D_lvqly")
+disabled = true
+
+[editable path="ChestInventoryUI"]
