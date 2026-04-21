@@ -7,9 +7,12 @@ enum GameState{
 }
 var current_game_state
 @export var chest: StaticBody3D
-@onready var inventory_ui: CanvasLayer = $"../InventoryUi"
+@onready var inventory_ui: CanvasLayer = $"../UI/InventoryUi"
 @onready var chest_inventory_ui: CanvasLayer = $"../Chest/ChestInventoryUI"
-@onready var paused_ui: CanvasLayer = $"../PausedUI"
+@onready var paused_ui: CanvasLayer = $"../UI/PausedUI"
+@onready var gameplay_ui: CanvasLayer = $"../UI/GameplayUi"
+
+
 var inventory_opened := false
 signal inventory_state_changed
 
@@ -44,11 +47,13 @@ func pause():
 			get_tree().paused = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			paused_ui.visible = true
+			gameplay_ui.visible = false
 			print("Game Paused")
 		GameState.PAUSE:
 			current_game_state = GameState.GAMEPLAY
 			get_tree().paused = false
 			paused_ui.visible = false
+			gameplay_ui.visible = true
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			print("Game Unpaused")
 
@@ -56,8 +61,10 @@ func openInventory():
 	match inventory_ui.visible:
 		false:
 			inventory_ui.visible = true
+			gameplay_ui.visible = false
 		true:
 			inventory_ui.visible = false
+			gameplay_ui.visible = true
 			if chest_inventory_ui.visible:
 				chest_inventory_ui.visible = false
 	updateMouseState()
