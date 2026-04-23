@@ -66,12 +66,12 @@ func removeFirst():
 		removeItem(items[0])
 
 func alphabeticalSort():
-	SortingAlg.bubble_sort(items, sort_order)
+	SortingAlg.bubbleSort(items, sort_order)
 	inventory_updated.emit()
 	last_sort = SortType.BUBBLE
 
 func raritySort():
-	SortingAlg.insertion_sort(items, sort_order)
+	SortingAlg.insertionSort(items, sort_order)
 	inventory_updated.emit()
 	last_sort = SortType.INSERT
 

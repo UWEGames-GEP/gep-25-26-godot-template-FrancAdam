@@ -21,7 +21,7 @@ func printArr(arr: Array):
 		print(i.item_name)
 
 # simple sort that sorts the array alphabetically
-func bubble_sort(arr : Array, sort_order : SortOrder):
+func bubbleSort(arr : Array, sort_order : SortOrder):
 	var n = arr.size()
 	var swapped: bool
 	
@@ -45,7 +45,7 @@ func bubble_sort(arr : Array, sort_order : SortOrder):
 			break
 
 # Sorts by Rarity
-func insertion_sort(arr: Array, sort_order : SortOrder): # Sorts by Rarity
+func insertionSort(arr: Array, sort_order : SortOrder): # Sorts by Rarity
 	var n = arr.size()
 	
 	for i in range(n):

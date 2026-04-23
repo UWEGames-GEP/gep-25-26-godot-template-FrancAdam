@@ -4,28 +4,17 @@ extends StaticBody3D
 @onready var chest_inventory_ui: CanvasLayer = $ChestInventoryUI
 @onready var range: Area3D = $Range
 
-@onready var interact_prompt: CanvasLayer = $InteractPrompt
-@onready var label: Label = $InteractPrompt/Label
-
 signal chest_changed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	player_template.chest_state_changed.connect(openInventory)
+	player_template.chest_state_changed.connect(toggleInventory)
 
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-func openInventory():
+func toggleInventory():
 	if chest_inventory_ui.visible == false:
 		chest_inventory_ui.visible = true
 		chest_changed.emit()
 	else:
-		closeInventory()
+		chest_inventory_ui.visible = false
+		chest_changed.emit()
 	
-func closeInventory():
-	chest_inventory_ui.visible = false
-	chest_changed.emit()

@@ -6,11 +6,11 @@ enum GameState{
 	PAUSE
 }
 var current_game_state
-@export var chest: StaticBody3D
 @onready var inventory_ui: CanvasLayer = $"../UI/InventoryUi"
 @onready var chest_inventory_ui: CanvasLayer = $"../Chest/ChestInventoryUI"
 @onready var paused_ui: CanvasLayer = $"../UI/PausedUI"
 @onready var gameplay_ui: CanvasLayer = $"../UI/GameplayUi"
+@export var chest: StaticBody3D
 
 
 var inventory_opened := false
@@ -25,9 +25,6 @@ func _ready() -> void:
 	#chest.chest_closed.connect(mouseDisable)
 	chest.chest_changed.connect(openInventory)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func _input(event):
 	if (event.is_action_pressed("Pause")):
@@ -40,7 +37,7 @@ func _input(event):
 		print(current_game_state) #debug -> 0=GAMEPLAY 1=PAUSE
 
 
-func pause():
+func pause() -> void:
 	match current_game_state:
 		GameState.GAMEPLAY:
 			current_game_state = GameState.PAUSE
@@ -57,7 +54,7 @@ func pause():
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			print("Game Unpaused")
 
-func openInventory():
+func openInventory() -> void:
 	match inventory_ui.visible:
 		false:
 			inventory_ui.visible = true
@@ -70,7 +67,7 @@ func openInventory():
 	updateMouseState()
 
 
-func updateMouseState():
+func updateMouseState() -> void:
 	var any_open = inventory_ui.visible or chest_inventory_ui.visible
 	if any_open:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
