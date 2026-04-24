@@ -21,8 +21,6 @@ signal inventory_state_changed
 func _ready() -> void:
 	current_game_state = GameState.GAMEPLAY
 	process_mode = Node.PROCESS_MODE_ALWAYS # this makes sure that _process runs even when the game is paused
-	#chest.chest_opened.connect(mouseEnable)
-	#chest.chest_closed.connect(mouseDisable)
 	chest.chest_changed.connect(openInventory)
 
 
